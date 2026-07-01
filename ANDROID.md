@@ -5,12 +5,18 @@
 ## Первый запуск
 
 1. Установить Node.js и Android Studio.
-2. В папке проекта выполнить `npm install`.
-3. Выполнить `npm run android:add`.
-4. Выполнить `npm run android:sync`.
-5. Выполнить `npm run android:open`.
+2. В папке проекта выполнить `pnpm install` или `npm install`.
+3. Выполнить `pnpm run android:sync` или `npm run android:sync`.
+4. Открыть папку `android/` в Android Studio.
+5. Собрать APK через Android Studio или запустить игру на подключенном устройстве.
 
-После этого Android Studio откроет проект в папке `android/`, откуда можно собрать APK или запустить игру на устройстве.
+Папка `android/` уже создана. Скрипт `android:sync` сначала собирает веб-ресурсы в `www/`, затем копирует их в Android-проект.
+
+## Команды
+
+- `pnpm run android:prepare` - подготовить папку `www/`.
+- `pnpm run android:sync` - обновить Android-проект после изменений в игре.
+- `pnpm run android:open` - открыть Android-проект через Capacitor, если Android Studio доступна в системе.
 
 ## Когда нужен Unity
 

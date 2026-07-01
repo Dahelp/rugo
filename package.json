@@ -6,9 +6,10 @@
   "description": "RUGO Three.js prototype packaged for Android with Capacitor.",
   "scripts": {
     "serve": "php -S localhost:8080",
-    "android:add": "npx cap add android",
-    "android:sync": "npx cap sync android",
-    "android:open": "npx cap open android"
+    "android:prepare": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prepare-android-web.ps1",
+    "android:add": "pnpm run android:prepare && cap add android",
+    "android:sync": "pnpm run android:prepare && cap sync android",
+    "android:open": "cap open android"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.0",

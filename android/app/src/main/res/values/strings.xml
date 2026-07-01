@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">RUGO</string>
+    <string name="title_activity_main">RUGO</string>
+    <string name="package_name">com.dahelp.rugo</string>
+    <string name="custom_url_scheme">com.dahelp.rugo</string>
+</resources>

@@ -1,7 +1,7 @@
 .idea/
 .vscode/
 node_modules/
-android/
+www/
 dist/
 build/
 .DS_Store
