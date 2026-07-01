@@ -1,0 +1,187 @@
+{
+  "version": "1.0",
+  "levels": [
+    {
+      "id": 1,
+      "name": "Greenfield Plains",
+      "nameRu": "Зелёные Равнины",
+      "environment": "grassland",
+      "ambientColor": "#7ec850",
+      "fogColor": "#a8e6cf",
+      "skyColor": "#87ceeb",
+      "groundColor": "#4a7c3c",
+      "lightIntensity": 1.2,
+      "difficulty": 1,
+      "bossId": "brick_beast",
+      "bossArenaPos": [0, 0, 80],
+      "objectives": [
+        { "type": "collect", "target": "energy_crystal", "count": 5, "label": "Собрать кристаллы" },
+        { "type": "defeat", "target": "block_beetle", "count": 8, "label": "Победить жуков" },
+        { "type": "reach", "target": "boss_arena", "count": 1, "label": "Дойти до арены босса" }
+      ],
+      "platforms": [
+        { "pos": [0, 0, 0], "size": [40, 1, 120], "color": "#4a7c3c" },
+        { "pos": [-8, 2, 15], "size": [6, 1, 6], "color": "#6b8e23" },
+        { "pos": [10, 3.5, 25], "size": [6, 1, 6], "color": "#6b8e23" },
+        { "pos": [-5, 5, 40], "size": [8, 1, 8], "color": "#6b8e23" },
+        { "pos": [8, 2, 55], "size": [6, 1, 6], "color": "#6b8e23" },
+        { "pos": [0, 0, 70], "size": [30, 1, 20], "color": "#3a6c2c" }
+      ],
+      "decorations": [
+        { "type": "tree", "pos": [-15, 0, 5] },
+        { "type": "tree", "pos": [14, 0, 10] },
+        { "type": "tree", "pos": [-12, 0, 30] },
+        { "type": "tree", "pos": [16, 0, 45] },
+        { "type": "rock", "pos": [-10, 0, 50] },
+        { "type": "rock", "pos": [12, 0, 20] },
+        { "type": "tree", "pos": [-16, 0, 60] }
+      ],
+      "enemySpawns": [
+        { "type": "block_beetle", "pos": [5, 1, 10] },
+        { "type": "block_beetle", "pos": [-6, 1, 18] },
+        { "type": "block_beetle", "pos": [8, 1, 28] },
+        { "type": "block_beetle", "pos": [-3, 6, 40] },
+        { "type": "block_beetle", "pos": [5, 1, 48] },
+        { "type": "block_beetle", "pos": [-8, 1, 55] },
+        { "type": "block_beetle", "pos": [3, 1, 62] },
+        { "type": "block_beetle", "pos": [-5, 1, 65] },
+        { "type": "block_beetle", "pos": [7, 1, 35] },
+        { "type": "block_beetle", "pos": [-7, 1, 25] }
+      ],
+      "crystalSpawns": [
+        { "pos": [-8, 3, 15] },
+        { "pos": [10, 4.5, 25] },
+        { "pos": [-5, 6, 40] },
+        { "pos": [8, 3, 55] },
+        { "pos": [0, 1.5, 68] }
+      ],
+      "coinSpawns": [
+        { "pos": [3, 1.5, 5] }, { "pos": [-3, 1.5, 8] },
+        { "pos": [6, 1.5, 12] }, { "pos": [-6, 1.5, 22] },
+        { "pos": [5, 1.5, 32] }, { "pos": [3, 1.5, 45] },
+        { "pos": [-5, 1.5, 52] }, { "pos": [6, 1.5, 58] }
+      ],
+      "rewards": { "coins": 500, "gems": 1 },
+      "unlockCost": 0,
+      "estimatedTime": 480
+    },
+    {
+      "id": 2,
+      "name": "Ember Caves",
+      "nameRu": "Тлеющие Пещеры",
+      "environment": "cave",
+      "ambientColor": "#ff6600",
+      "fogColor": "#4a0e00",
+      "skyColor": "#1a0500",
+      "groundColor": "#3d1a00",
+      "lightIntensity": 0.8,
+      "difficulty": 2,
+      "bossId": "inferno_dragon",
+      "bossArenaPos": [0, 0, 80],
+      "objectives": [
+        { "type": "collect", "target": "energy_crystal", "count": 7, "label": "Собрать кристаллы" },
+        { "type": "defeat", "target": "fire_imp", "count": 10, "label": "Победить огненных импов" },
+        { "type": "reach", "target": "boss_arena", "count": 1, "label": "Дойти до арены босса" }
+      ],
+      "platforms": [
+        { "pos": [0, 0, 0], "size": [40, 1, 120], "color": "#3d1a00" },
+        { "pos": [0, 0, 70], "size": [30, 1, 20], "color": "#2a1000" }
+      ],
+      "decorations": [
+        { "type": "rock", "pos": [-12, 0, 10] },
+        { "type": "rock", "pos": [14, 0, 25] },
+        { "type": "rock", "pos": [-10, 0, 45] },
+        { "type": "rock", "pos": [12, 0, 55] }
+      ],
+      "enemySpawns": [
+        { "type": "fire_imp", "pos": [5, 1, 10] },
+        { "type": "fire_imp", "pos": [-6, 1, 15] },
+        { "type": "fire_imp", "pos": [8, 1, 22] },
+        { "type": "fire_imp", "pos": [-4, 1, 30] },
+        { "type": "fire_imp", "pos": [6, 1, 38] },
+        { "type": "fire_imp", "pos": [-8, 1, 45] },
+        { "type": "fire_imp", "pos": [3, 1, 52] },
+        { "type": "fire_imp", "pos": [-5, 1, 58] },
+        { "type": "fire_imp", "pos": [7, 1, 35] },
+        { "type": "fire_imp", "pos": [-3, 1, 25] }
+      ],
+      "crystalSpawns": [
+        { "pos": [-6, 2, 12] },
+        { "pos": [8, 2, 20] },
+        { "pos": [-4, 2, 32] },
+        { "pos": [6, 2, 40] },
+        { "pos": [-8, 2, 48] },
+        { "pos": [4, 2, 56] },
+        { "pos": [0, 2, 64] }
+      ],
+      "coinSpawns": [
+        { "pos": [3, 1.5, 8] }, { "pos": [-3, 1.5, 18] },
+        { "pos": [5, 1.5, 28] }, { "pos": [-5, 1.5, 38] },
+        { "pos": [4, 1.5, 48] }, { "pos": [-4, 1.5, 55] }
+      ],
+      "rewards": { "coins": 800, "gems": 1 },
+      "unlockCost": 0,
+      "estimatedTime": 600
+    },
+    {
+      "id": 3,
+      "name": "Frozen Citadel",
+      "nameRu": "Ледяная Цитадель",
+      "environment": "ice",
+      "ambientColor": "#aaddff",
+      "fogColor": "#d0e8ff",
+      "skyColor": "#c0e0ff",
+      "groundColor": "#b0d0f0",
+      "lightIntensity": 1.0,
+      "difficulty": 3,
+      "bossId": "frost_witch",
+      "bossArenaPos": [0, 0, 80],
+      "objectives": [
+        { "type": "collect", "target": "energy_crystal", "count": 8, "label": "Собрать кристаллы" },
+        { "type": "defeat", "target": "ice_golem", "count": 10, "label": "Победить големов" },
+        { "type": "reach", "target": "boss_arena", "count": 1, "label": "Дойти до арены босса" }
+      ],
+      "platforms": [
+        { "pos": [0, 0, 0], "size": [40, 1, 120], "color": "#b0d0f0" },
+        { "pos": [0, 0, 70], "size": [30, 1, 20], "color": "#90c0e0" }
+      ],
+      "decorations": [
+        { "type": "rock", "pos": [-14, 0, 8] },
+        { "type": "rock", "pos": [13, 0, 28] },
+        { "type": "rock", "pos": [-11, 0, 48] },
+        { "type": "rock", "pos": [15, 0, 58] }
+      ],
+      "enemySpawns": [
+        { "type": "ice_golem", "pos": [5, 1, 10] },
+        { "type": "ice_golem", "pos": [-6, 1, 18] },
+        { "type": "ice_golem", "pos": [8, 1, 25] },
+        { "type": "ice_golem", "pos": [-4, 1, 32] },
+        { "type": "ice_golem", "pos": [6, 1, 40] },
+        { "type": "ice_golem", "pos": [-8, 1, 48] },
+        { "type": "ice_golem", "pos": [3, 1, 55] },
+        { "type": "ice_golem", "pos": [-5, 1, 62] },
+        { "type": "ice_golem", "pos": [7, 1, 35] },
+        { "type": "ice_golem", "pos": [-3, 1, 22] }
+      ],
+      "crystalSpawns": [
+        { "pos": [-6, 2, 14] },
+        { "pos": [8, 2, 22] },
+        { "pos": [-4, 2, 35] },
+        { "pos": [6, 2, 42] },
+        { "pos": [-8, 2, 50] },
+        { "pos": [4, 2, 60] },
+        { "pos": [-2, 2, 66] },
+        { "pos": [2, 2, 30] }
+      ],
+      "coinSpawns": [
+        { "pos": [3, 1.5, 6] }, { "pos": [-3, 1.5, 16] },
+        { "pos": [5, 1.5, 26] }, { "pos": [-5, 1.5, 36] },
+        { "pos": [4, 1.5, 46] }, { "pos": [-4, 1.5, 56] },
+        { "pos": [2, 1.5, 62] }
+      ],
+      "rewards": { "coins": 1200, "gems": 1 },
+      "unlockCost": 0,
+      "estimatedTime": 720
+    }
+  ]
+}

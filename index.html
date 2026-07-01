@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>RUGO</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "./vendor/three.module.js"
+        }
+    }
+    </script>
+</head>
+<body>
+
+<canvas id="gameCanvas"></canvas>
+
+<!-- ========== CURRENCY BAR ========== -->
+<div class="currency-bar" id="currencyBar" style="display:none;">
+    <div class="currency-item coins">
+        <span class="icon">🪙</span>
+        <span id="coinCount">0</span>
+    </div>
+    <div class="currency-item gems">
+        <span class="icon">💎</span>
+        <span id="gemCount">0</span>
+    </div>
+</div>
+
+<!-- ========== NOTIFICATION ========== -->
+<div class="notification" id="notification"></div>
+
+<!-- ========== MAIN MENU ========== -->
+<div class="screen active" id="mainMenu">
+    <div class="game-logo">RUGO</div>
+    <div class="tagline">Приключение из блоков</div>
+    <button class="btn btn-primary" id="btnStart">▶ Играть</button>
+    <button class="btn" id="btnShop">🛒 Магазин героев</button>
+    <button class="btn btn-small" id="btnReset">Сбросить прогресс</button>
+</div>
+
+<!-- ========== LEVEL SELECT ========== -->
+<div class="screen" id="levelSelect">
+    <h1 class="screen-title">Выбор уровня</h1>
+    <div class="level-grid" id="levelGrid"></div>
+    <div style="display:flex; gap:10px;">
+        <button class="btn btn-small" id="btnLevelBack">← Назад</button>
+        <button class="btn btn-small btn-green" id="btnHeroSelect">🦸 Выбрать героя</button>
+    </div>
+</div>
+
+<!-- ========== HERO SELECT ========== -->
+<div class="screen" id="heroSelect">
+    <h1 class="screen-title">Выбор героя</h1>
+    <div class="hero-grid" id="heroSelectGrid"></div>
+    <div style="display:flex; gap:10px;">
+        <button class="btn btn-small" id="btnHeroBack">← Назад</button>
+        <button class="btn btn-small btn-green" id="btnShop2">🛒 Магазин</button>
+    </div>
+</div>
+
+<!-- ========== SHOP ========== -->
+<div class="screen" id="shop">
+    <h1 class="screen-title">Магазин героев</h1>
+    <div class="hero-grid" id="shopGrid"></div>
+    <button class="btn btn-small" id="btnShopBack">← Назад</button>
+</div>
+
+<!-- ========== HUD ========== -->
+<div id="hud">
+    <!-- Health -->
+    <div class="health-container">
+        <div class="health-bar-bg">
+            <div class="health-bar-fill" id="healthFill"></div>
+        </div>
+        <div class="health-text" id="healthText">100 / 100</div>
+        <div class="special-bar-bg">
+            <div class="special-bar-fill" id="specialFill"></div>
+            <div class="special-label" id="specialLabel">Спецспособность</div>
+        </div>
+    </div>
+
+    <!-- Objectives -->
+    <div class="objectives-panel">
+        <div class="objectives-title">Задания</div>
+        <div id="objectivesList"></div>
+    </div>
+
+    <!-- Boss Health -->
+    <div class="boss-health-container" id="bossHealthContainer">
+        <div class="boss-name" id="bossName">БОСС</div>
+        <div class="boss-health-bg">
+            <div class="boss-health-fill" id="bossHealthFill"></div>
+        </div>
+    </div>
+
+    <!-- Controls hint (desktop) -->
+    <div class="controls-hint">
+        WASD — движение | Space — прыжок | ЛКМ/J — атака<br>
+        K — спецспособность | Shift — рывок | ПКМ+движ — камера | Колесо — зум
+    </div>
+
+    <!-- Touch controls -->
+    <div class="touch-controls" id="touchControls">
+        <div class="joystick-base" id="joystickBase">
+            <div class="joystick-knob" id="joystickKnob"></div>
+        </div>
+        <div class="action-buttons">
+            <button class="action-btn dash" id="btnDash">💨</button>
+            <button class="action-btn jump" id="btnJump">⬆</button>
+            <button class="action-btn special" id="btnSpecial">✦</button>
+            <button class="action-btn attack" id="btnAttack">⚔</button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== VICTORY ========== -->
+<div class="screen" id="victoryScreen">
+    <div class="result-title victory" id="victoryTitle">ПОБЕДА!</div>
+    <div class="reward-display" id="victoryRewards"></div>
+    <button class="btn btn-green" id="btnNextLevel">▶ Следующий уровень</button>
+    <button class="btn" id="btnVictoryMenu">Главное меню</button>
+</div>
+
+<!-- ========== DEFEAT ========== -->
+<div class="screen" id="defeatScreen">
+    <div class="result-title defeat">ПОРАЖЕНИЕ</div>
+    <button class="btn btn-primary" id="btnRetry">↻ Попробовать снова</button>
+    <button class="btn" id="btnDefeatMenu">Главное меню</button>
+</div>
+
+<!-- ========== Loading ========== -->
+<div class="screen" id="loadingScreen" style="background:#0d1b2a;">
+    <div style="font-size: 48px; font-weight: 900; color: #ffd700; margin-bottom: 20px;">RUGO</div>
+    <div style="color: #8aa5c4;">Загрузка...</div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

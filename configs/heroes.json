@@ -1,0 +1,65 @@
+﻿{
+  "version": "1.0",
+  "heroes": [
+    {
+      "id": "rugo",
+      "name": "Rugo",
+      "role": "Универсальный воин",
+      "description": "Сбалансированный герой с мечом и щитом. Блокирует урон щитом.",
+      "colors": { "head": "#ffd700", "torso": "#1a5276", "legs": "#1a1a2e", "arms": "#1a5276", "weapon": "#c0c0c0" },
+      "stats": { "health": 100, "speed": 5, "jumpPower": 7, "attack": 20, "attackSpeed": 1.0, "attackRange": 2.5, "defense": 15 },
+      "special": { "name": "shield_barrier", "label": "Щит-барьер", "duration": 3, "cooldown": 15, "description": "Блокирует весь урон на 3 секунды" },
+      "price": { "type": "coins", "amount": 0 }
+    },
+    {
+      "id": "blaze",
+      "name": "Blaze",
+      "role": "Быстрый боец",
+      "description": "Двойные кинжалы. Очень быстрый, но хрупкий.",
+      "colors": { "head": "#e74c3c", "torso": "#2c0001", "legs": "#1a1a1a", "arms": "#e74c3c", "weapon": "#ff6600" },
+      "stats": { "health": 70, "speed": 8, "jumpPower": 9, "attack": 15, "attackSpeed": 2.0, "attackRange": 2, "defense": 5 },
+      "special": { "name": "dash_strike", "label": "Рывок", "duration": 0.5, "cooldown": 12, "description": "Телепорт к врагу и мощный удар" },
+      "price": { "type": "coins", "amount": 2000 }
+    },
+    {
+      "id": "goliath",
+      "name": "Goliath",
+      "role": "Танк",
+      "description": "Тяжелый молот. Медленный, но живучий. Урон по площади.",
+      "colors": { "head": "#95a5a6", "torso": "#34495e", "legs": "#2c3e50", "arms": "#34495e", "weapon": "#7f8c8d" },
+      "stats": { "health": 200, "speed": 3, "jumpPower": 5, "attack": 45, "attackSpeed": 0.5, "attackRange": 3.5, "defense": 40 },
+      "special": { "name": "earthquake", "label": "Землетрясение", "duration": 1, "cooldown": 20, "description": "Оглушает всех врагов вокруг на 2 секунды" },
+      "price": { "type": "coins", "amount": 5000 }
+    },
+    {
+      "id": "spark",
+      "name": "Spark",
+      "role": "Маг дальнего боя",
+      "description": "Энергетический посох. Атакует издалека энергетическими снарядами.",
+      "colors": { "head": "#a569bd", "torso": "#4a235a", "legs": "#1a1a2e", "arms": "#a569bd", "weapon": "#bb8fce" },
+      "stats": { "health": 80, "speed": 5, "jumpPower": 7, "attack": 25, "attackSpeed": 0.8, "attackRange": 15, "defense": 10 },
+      "special": { "name": "energy_storm", "label": "Энергошторм", "duration": 2, "cooldown": 20, "description": "Ливень снарядов по площади" },
+      "price": { "type": "coins", "amount": 8000 }
+    },
+    {
+      "id": "shadow",
+      "name": "Shadow",
+      "role": "Ниндзя",
+      "description": "Кусаригама. Двойной прыжок. Невидимость.",
+      "colors": { "head": "#2c2c2c", "torso": "#0d0d0d", "legs": "#1a1a1a", "arms": "#2c2c2c", "weapon": "#8b0000" },
+      "stats": { "health": 90, "speed": 7, "jumpPower": 12, "attack": 22, "attackSpeed": 1.5, "attackRange": 5, "defense": 10 },
+      "special": { "name": "invisibility", "label": "Невидимость", "duration": 5, "cooldown": 18, "description": "Неуязвимость и невидимость на 5 секунд" },
+      "price": { "type": "gems", "amount": 50 }
+    },
+    {
+      "id": "titan",
+      "name": "Titan",
+      "role": "Рыцарь",
+      "description": "Копье и башенный щит. Прочный универсал премиум-класса.",
+      "colors": { "head": "#d4ac0d", "torso": "#7d6608", "legs": "#1a1a2e", "arms": "#7d6608", "weapon": "#b7950b" },
+      "stats": { "health": 180, "speed": 4, "jumpPower": 6, "attack": 35, "attackSpeed": 0.8, "attackRange": 4, "defense": 35 },
+      "special": { "name": "charge", "label": "Таран", "duration": 1, "cooldown": 16, "description": "Рывок тараном, отбрасывает врагов" },
+      "price": { "type": "gems", "amount": 80 }
+    }
+  ]
+}

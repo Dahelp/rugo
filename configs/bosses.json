@@ -1,0 +1,64 @@
+﻿{
+  "version": "1.0",
+  "bosses": [
+    {
+      "id": "brick_beast",
+      "name": "Brick Beast",
+      "nameRu": "Кирпичный Зверь",
+      "description": "Громадный зверь из блоков. Атакует когтями и топотом.",
+      "colors": { "body": "#5b2c2c", "head": "#7b3f3f", "legs": "#3d1a1a", "detail": "#c0392b" },
+      "scale": 2.5,
+      "stats": { "health": 500, "speed": 2, "attack": 15 },
+      "phases": [
+        { "atHealthPercent": 100, "attacks": ["claw_slash", "ground_pound"], "attackInterval": 3.0 },
+        { "atHealthPercent": 50, "attacks": ["claw_slash", "ground_pound", "ground_pound"], "attackInterval": 2.0 }
+      ],
+      "attacks": {
+        "claw_slash": { "type": "melee", "damage": 15, "range": 4, "windup": 0.5, "telegraph": "arm_raise" },
+        "ground_pound": { "type": "aoe", "damage": 20, "range": 6, "windup": 1.0, "recovery": 3.0, "telegraph": "jump" }
+      },
+      "weaknessWindow": { "trigger": "after_ground_pound", "duration": 3 },
+      "rewards": { "coins": 500, "energyCrystal": true }
+    },
+    {
+      "id": "inferno_dragon",
+      "name": "Inferno Dragon",
+      "nameRu": "Огненный Дракон",
+      "description": "Огнедышащий дракон. Уязвим к дальним атакам в полете.",
+      "colors": { "body": "#8b2500", "head": "#ff4500", "legs": "#5c1a00", "detail": "#ffaa00" },
+      "scale": 3.0,
+      "stats": { "health": 800, "speed": 3, "attack": 25 },
+      "phases": [
+        { "atHealthPercent": 100, "attacks": ["fire_breath", "fireball"], "attackInterval": 2.5 },
+        { "atHealthPercent": 66, "attacks": ["fire_breath", "fireball", "fireball"], "attackInterval": 2.0 },
+        { "atHealthPercent": 33, "attacks": ["fire_breath", "fireball", "fireball", "fireball"], "attackInterval": 1.5 }
+      ],
+      "attacks": {
+        "fire_breath": { "type": "cone", "damage": 25, "range": 8, "windup": 1.0, "telegraph": "neck_back" },
+        "fireball": { "type": "projectile", "damage": 20, "range": 20, "windup": 0.8, "telegraph": "mouth_glow" }
+      },
+      "weaknessWindow": { "trigger": "after_fire_breath", "duration": 4 },
+      "rewards": { "coins": 800, "energyCrystal": true }
+    },
+    {
+      "id": "frost_witch",
+      "name": "Frost Witch",
+      "nameRu": "Ледяная Ведьма",
+      "description": "Замораживает и забрасывает ледяными снарядами.",
+      "colors": { "body": "#2980b9", "head": "#85c1e9", "legs": "#1a5276", "detail": "#aed6f1" },
+      "scale": 2.0,
+      "stats": { "health": 1000, "speed": 2.5, "attack": 18 },
+      "phases": [
+        { "atHealthPercent": 100, "attacks": ["ice_shards", "freeze"], "attackInterval": 2.5 },
+        { "atHealthPercent": 66, "attacks": ["ice_shards", "freeze", "ice_shards"], "attackInterval": 2.0 },
+        { "atHealthPercent": 33, "attacks": ["ice_shards", "ice_shards", "freeze", "ice_shards"], "attackInterval": 1.5 }
+      ],
+      "attacks": {
+        "ice_shards": { "type": "fan_projectile", "damage": 18, "range": 15, "windup": 0.8, "telegraph": "hands_up" },
+        "freeze": { "type": "debuff", "damage": 5, "range": 20, "windup": 1.2, "telegraph": "staff_glow" }
+      },
+      "weaknessWindow": { "trigger": "after_teleport", "duration": 2 },
+      "rewards": { "coins": 1200, "energyCrystal": true }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+.idea/
+.vscode/
+node_modules/
+android/
+dist/
+build/
+.DS_Store
+Thumbs.db
+*.log
+.codex_write_test.tmp

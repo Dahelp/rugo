@@ -1,0 +1,708 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    color: #fff;
+}
+
+#gameCanvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ========== SCREENS ========== */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* ========== MAIN MENU ========== */
+#mainMenu {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 50%, #2d5a27 100%);
+}
+
+.game-logo {
+    font-size: clamp(60px, 12vw, 140px);
+    font-weight: 900;
+    letter-spacing: 8px;
+    background: linear-gradient(180deg, #ffd700 0%, #ff8c00 50%, #ff4500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 20px rgba(255, 140, 0, 0.4);
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.tagline {
+    font-size: clamp(12px, 2vw, 18px);
+    color: #a0c4ff;
+    margin-bottom: 40px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(180deg, #2980b9 0%, #1a5276 100%);
+    border: 2px solid #5dade2;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 6px 0;
+    min-width: 260px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.btn:hover {
+    background: linear-gradient(180deg, #3498db 0%, #2471a3 100%);
+    border-color: #85c1e9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn.btn-primary {
+    background: linear-gradient(180deg, #f39c12 0%, #d35400 100%);
+    border-color: #f5b041;
+}
+
+.btn.btn-primary:hover {
+    background: linear-gradient(180deg, #f5b041 0%, #e67e22 100%);
+}
+
+.btn.btn-danger {
+    background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
+    border-color: #ec7063;
+}
+
+.btn.btn-green {
+    background: linear-gradient(180deg, #27ae60 0%, #1e8449 100%);
+    border-color: #58d68d;
+}
+
+.btn.btn-green:hover {
+    background: linear-gradient(180deg, #2ecc71 0%, #239b56 100%);
+}
+
+.btn.btn-small {
+    padding: 8px 20px;
+    font-size: 14px;
+    min-width: 120px;
+}
+
+/* ========== LEVEL SELECT ========== */
+#levelSelect, #heroSelect, #shop, #settings, #victoryScreen, #defeatScreen {
+    background: rgba(13, 27, 42, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.screen-title {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #ffd700;
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+.level-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+.level-card {
+    background: linear-gradient(135deg, #1b3a5c, #0d1b2a);
+    border: 3px solid #3d6a8a;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.level-card:hover:not(.locked) {
+    border-color: #ffd700;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.level-card.locked {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.level-card.completed {
+    border-color: #27ae60;
+}
+
+.level-number {
+    font-size: 42px;
+    font-weight: 900;
+    color: #5dade2;
+}
+
+.level-name {
+    font-size: 14px;
+    color: #aab7c4;
+    margin-top: 6px;
+}
+
+.level-difficulty {
+    margin-top: 8px;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.lock-icon {
+    font-size: 36px;
+    margin-top: 10px;
+}
+
+/* ========== HERO SELECT ========== */
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.hero-card {
+    background: linear-gradient(135deg, #1a2a3a, #0d1b2a);
+    border: 3px solid #34568b;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.hero-card:hover:not(.locked) {
+    border-color: #ffd700;
+    transform: scale(1.03);
+}
+
+.hero-card.selected {
+    border-color: #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.hero-card.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.hero-card .hero-preview {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    border: 3px solid;
+}
+
+.hero-card .hero-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.hero-card .hero-role {
+    font-size: 12px;
+    color: #8aa5c4;
+    margin-top: 2px;
+}
+
+.hero-card .hero-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    font-size: 11px;
+    color: #aab7c4;
+}
+
+.hero-card .stat-bar {
+    width: 100%;
+    height: 6px;
+    background: #1a1a2e;
+    border-radius: 3px;
+    margin: 2px 0;
+    overflow: hidden;
+}
+
+.hero-card .stat-fill {
+    height: 100%;
+    border-radius: 3px;
+}
+
+/* ========== SHOP ========== */
+#shop .hero-grid {
+    max-width: 900px;
+}
+
+.price-tag {
+    margin-top: 8px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.price-tag.coins {
+    background: rgba(241, 196, 15, 0.2);
+    color: #f1c40f;
+    border: 1px solid #f1c40f;
+}
+
+.price-tag.gems {
+    background: rgba(155, 89, 182, 0.2);
+    color: #bb8fce;
+    border: 1px solid #bb8fce;
+}
+
+.price-tag.owned {
+    background: rgba(39, 174, 96, 0.2);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+/* ========== CURRENCY BAR ========== */
+.currency-bar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 12px;
+    z-index: 200;
+}
+
+.currency-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.currency-item .icon {
+    font-size: 18px;
+}
+
+.currency-item.coins .icon { color: #f1c40f; }
+.currency-item.gems .icon { color: #bb8fce; }
+
+/* ========== HUD ========== */
+#hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    pointer-events: none;
+    z-index: 50;
+}
+
+#hud.active {
+    display: block;
+}
+
+.health-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.health-bar-bg {
+    width: 240px;
+    height: 22px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #e74c3c;
+    border-radius: 11px;
+    overflow: hidden;
+}
+
+.health-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e74c3c, #ff6b6b);
+    border-radius: 9px;
+    transition: width 0.3s ease;
+    width: 100%;
+}
+
+.health-text {
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    padding-left: 4px;
+}
+
+.special-bar-bg {
+    width: 200px;
+    height: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #9b59b6;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.special-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #8e44ad, #bb8fce);
+    border-radius: 6px;
+    transition: width 0.2s ease;
+    width: 0%;
+}
+
+.special-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* ========== OBJECTIVES ========== */
+.objectives-panel {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 10px 16px;
+    min-width: 240px;
+}
+
+.objectives-title {
+    font-size: 12px;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.objective-item {
+    font-size: 13px;
+    color: #ccc;
+    padding: 2px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.objective-item .check {
+    width: 16px;
+    text-align: center;
+}
+
+.objective-item.done {
+    color: #2ecc71;
+    text-decoration: line-through;
+}
+
+/* ========== BOSS HEALTH BAR ========== */
+.boss-health-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 600px;
+    display: none;
+}
+
+.boss-health-container.active {
+    display: block;
+}
+
+.boss-name {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: #ff4444;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 2px 2px 4px #000;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.boss-health-bg {
+    width: 100%;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid #c0392b;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.boss-health-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #c0392b, #e74c3c, #ff6b6b);
+    border-radius: 11px;
+    transition: width 0.3s ease;
+    width: 100%;
+}
+
+/* ========== TOUCH CONTROLS ========== */
+.touch-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    pointer-events: none;
+    display: none;
+}
+
+.touch-controls.active {
+    display: block;
+}
+
+.joystick-base {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    pointer-events: auto;
+}
+
+.joystick-knob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+}
+
+.action-buttons {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    gap: 12px;
+    pointer-events: none;
+}
+
+.action-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s;
+    user-select: none;
+}
+
+.action-btn:active {
+    transform: scale(0.9);
+}
+
+.action-btn.attack {
+    background: rgba(231, 76, 60, 0.5);
+    border-color: rgba(231, 76, 60, 0.8);
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+}
+
+.action-btn.jump {
+    background: rgba(52, 152, 219, 0.5);
+    border-color: rgba(52, 152, 219, 0.8);
+}
+
+.action-btn.special {
+    background: rgba(155, 89, 182, 0.5);
+    border-color: rgba(155, 89, 182, 0.8);
+}
+
+.action-btn.dash {
+    background: rgba(39, 174, 96, 0.5);
+    border-color: rgba(39, 174, 96, 0.8);
+}
+
+/* ========== VICTORY / DEFEAT ========== */
+.result-title {
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.result-title.victory {
+    color: #ffd700;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.result-title.defeat {
+    color: #e74c3c;
+    text-shadow: 0 0 30px rgba(231, 76, 60, 0.5);
+}
+
+.reward-display {
+    font-size: 24px;
+    margin: 20px 0;
+    color: #f1c40f;
+}
+
+.reward-display .reward-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 15px;
+}
+
+/* ========== CONTROLS HINT ========== */
+.controls-hint {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    line-height: 1.6;
+}
+
+/* ========== NOTIFICATION ========== */
+.notification {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 300;
+    pointer-events: none;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .btn {
+        min-width: 200px;
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    .level-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .objectives-panel {
+        min-width: 180px;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
