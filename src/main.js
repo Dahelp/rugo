@@ -46,6 +46,13 @@ function setupButtons(game) {
     onClick('btnHeroSelect', () => game.showHeroSelect());
     onClick('btnHeroBack', () => game.showLevelSelect());
     onClick('btnShopBack', () => game.ui.showScreen('mainMenu'));
+    onClick('btnPause', () => game.pauseGame());
+    onClick('btnResume', () => game.resumeGame());
+    onClick('btnPauseRetry', () => game.retryLevel());
+    onClick('btnPauseMenu', () => {
+        document.getElementById('currencyBar').style.display = 'none';
+        game.backToMenu();
+    });
 
     onClick('btnNextLevel', () => {
         const currentId = game.currentLevelData.id;
@@ -66,6 +73,10 @@ function setupButtons(game) {
     onClick('btnDefeatMenu', () => {
         document.getElementById('currencyBar').style.display = 'none';
         game.backToMenu();
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Escape') game.togglePause();
     });
 }
 

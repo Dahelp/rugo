@@ -351,6 +351,25 @@ export class Game {
         this.startLevel(this.currentLevelData);
     }
 
+    pauseGame() {
+        if (this.state !== 'playing') return;
+        this.state = 'paused';
+        this.ui.showScreen('pauseScreen');
+        this.ui.showTouchControls(false);
+    }
+
+    resumeGame() {
+        if (this.state !== 'paused') return;
+        this.state = 'playing';
+        this.ui.hideAllScreens();
+        this.ui.showTouchControls(this.input.isTouch());
+    }
+
+    togglePause() {
+        if (this.state === 'playing') this.pauseGame();
+        else if (this.state === 'paused') this.resumeGame();
+    }
+
     backToMenu() {
         this._clearScene();
         this.state = 'menu';

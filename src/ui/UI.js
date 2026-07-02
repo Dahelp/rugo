@@ -1,7 +1,7 @@
 ﻿export class UI {
     constructor(game) {
         this.game = game;
-        this.screens = ['mainMenu', 'levelSelect', 'heroSelect', 'shop', 'victoryScreen', 'defeatScreen'];
+        this.screens = ['mainMenu', 'levelSelect', 'heroSelect', 'shop', 'pauseScreen', 'victoryScreen', 'defeatScreen'];
     }
 
     showScreen(name) {

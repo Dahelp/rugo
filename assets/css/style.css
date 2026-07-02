@@ -14,6 +14,7 @@ html, body {
     background: #000;
     font-family: 'Segoe UI', 'Roboto', sans-serif;
     color: #fff;
+    touch-action: none;
 }
 
 #gameCanvas {
@@ -45,7 +46,26 @@ html, body {
 
 /* ========== MAIN MENU ========== */
 #mainMenu {
-    background: linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 50%, #2d5a27 100%);
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.18), transparent 24%),
+        linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 52%, #2d5a27 100%);
+}
+
+.brand-mark {
+    width: 82px;
+    height: 82px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    background: linear-gradient(145deg, #ffd700, #ff7a18);
+    border: 4px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 3px 0 rgba(255,255,255,0.45);
+    color: #182235;
+    font-size: 52px;
+    line-height: 1;
+    font-weight: 900;
 }
 
 .game-logo {
@@ -144,6 +164,13 @@ html, body {
     margin-bottom: 30px;
     color: #ffd700;
     text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+.screen-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .level-grid {
@@ -362,6 +389,23 @@ html, body {
 
 #hud.active {
     display: block;
+}
+
+.pause-btn {
+    position: absolute;
+    top: 14px;
+    right: 15px;
+    z-index: 90;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 900;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .health-container {
@@ -609,6 +653,33 @@ html, body {
     border-color: rgba(39, 174, 96, 0.8);
 }
 
+/* ========== PAUSE ========== */
+.overlay-screen {
+    background: rgba(4, 10, 18, 0.68);
+    backdrop-filter: blur(8px);
+}
+
+.pause-panel {
+    width: min(360px, 88vw);
+    padding: 28px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(13, 27, 42, 0.94);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.pause-title {
+    font-size: 34px;
+    font-weight: 900;
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
 /* ========== VICTORY / DEFEAT ========== */
 .result-title {
     font-size: clamp(40px, 8vw, 80px);
@@ -674,6 +745,57 @@ html, body {
     transform: translateX(-50%) translateY(0);
 }
 
+/* ========== SPLASH ========== */
+#loadingScreen {
+    background:
+        radial-gradient(circle at 50% 28%, rgba(255, 215, 0, 0.22), transparent 24%),
+        linear-gradient(145deg, #07111f 0%, #102a43 52%, #193d2a 100%);
+    z-index: 500;
+}
+
+.splash-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.splash-logo {
+    font-size: clamp(58px, 11vw, 122px);
+    font-weight: 900;
+    color: #ffd700;
+    text-shadow: 0 5px 0 #9a4b00, 0 18px 40px rgba(0,0,0,0.45);
+}
+
+.splash-subtitle {
+    font-size: 16px;
+    color: #b8d6f2;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.splash-loader {
+    width: 220px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.14);
+    overflow: hidden;
+}
+
+.splash-loader span {
+    display: block;
+    width: 46%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #ffd700, #ff7a18);
+    animation: splashLoad 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes splashLoad {
+    from { transform: translateX(0); }
+    to { transform: translateX(118%); }
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     .btn {
@@ -692,6 +814,108 @@ html, body {
 
     .objectives-panel {
         min-width: 180px;
+    }
+}
+
+@media (hover: none), (max-width: 900px) {
+    .controls-hint {
+        display: none;
+    }
+
+    .currency-bar {
+        top: max(10px, env(safe-area-inset-top));
+        right: 74px;
+        gap: 8px;
+    }
+
+    .currency-item {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    .pause-btn {
+        top: max(10px, env(safe-area-inset-top));
+        right: max(10px, env(safe-area-inset-right));
+        width: 46px;
+        height: 46px;
+    }
+
+    .health-container {
+        top: max(10px, env(safe-area-inset-top));
+        left: max(10px, env(safe-area-inset-left));
+        gap: 4px;
+    }
+
+    .health-bar-bg {
+        width: 174px;
+        height: 18px;
+    }
+
+    .health-text {
+        font-size: 11px;
+    }
+
+    .special-bar-bg {
+        width: 164px;
+        height: 15px;
+    }
+
+    .special-label {
+        font-size: 10px;
+    }
+
+    .objectives-panel {
+        top: max(70px, calc(env(safe-area-inset-top) + 64px));
+        left: max(10px, env(safe-area-inset-left));
+        transform: none;
+        min-width: 188px;
+        max-width: 42vw;
+        padding: 8px 10px;
+    }
+
+    .objectives-title {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .objective-item {
+        font-size: 11px;
+        gap: 4px;
+    }
+
+    .joystick-base {
+        width: 108px;
+        height: 108px;
+        left: max(18px, env(safe-area-inset-left));
+        bottom: max(18px, env(safe-area-inset-bottom));
+    }
+
+    .joystick-knob {
+        width: 46px;
+        height: 46px;
+    }
+
+    .action-buttons {
+        right: max(18px, env(safe-area-inset-right));
+        bottom: max(18px, env(safe-area-inset-bottom));
+        gap: 10px;
+    }
+
+    .action-btn {
+        width: 58px;
+        height: 58px;
+        font-size: 22px;
+    }
+
+    .action-btn.attack {
+        width: 76px;
+        height: 76px;
+        font-size: 26px;
+    }
+
+    .boss-health-container {
+        bottom: max(14px, env(safe-area-inset-bottom));
+        width: 46%;
     }
 }
 
